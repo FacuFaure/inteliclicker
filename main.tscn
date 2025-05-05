@@ -1,12 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0o7ea35j478t"]
+[gd_scene load_steps=8 format=3 uid="uid://c0o7ea35j478t"]
 
 [ext_resource type="Script" uid="uid://bj0quajjxlvql" path="res://main.gd" id="1_8kdot"]
+[ext_resource type="Texture2D" uid="uid://dxwerxkg45s3l" path="res://Flux_Dev_Create_a_vibrant_nostalgiatinged_background_for_a_ret_3 (1).jpg" id="2_7mycd"]
 [ext_resource type="AudioStream" uid="uid://by66nq2unymty" path="res://mouse-click-198485.mp3" id="2_el4ax"]
+[ext_resource type="FontFile" uid="uid://blwm72puor2wx" path="res://RETROTECH.ttf" id="3_272bh"]
 [ext_resource type="Texture2D" uid="uid://dnhjhn5vu57tk" path="res://Captura de pantalla 2025-04-24 173153 (1).png" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://d1m0a1e2dnalp" path="res://Adobe_Express_-_file-removebg-preview.png" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bwmi56mt66tm6" path="res://Flux_Schnell_Create_a_hospitalstyle_serum_in_a_retro_8bit_desi_2-removebg-preview-pica (1).png" id="7_272bh"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8kdot")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577, 325)
+texture = ExtResource("2_7mycd")
+
+[node name="GameOverLabel" type="Label" parent="."]
+offset_left = 153.0
+offset_top = 234.0
+offset_right = 509.0
+offset_bottom = 423.0
+theme_override_fonts/font = ExtResource("3_272bh")
+theme_override_font_sizes/font_size = 185
 
 [node name="Label" type="Label" parent="."]
 offset_left = 569.0
@@ -44,10 +59,10 @@ text = "Alien           25 Clicks
 1 click automatico p/s"
 
 [node name="CompreAviso" type="Label" parent="."]
-offset_left = 473.0
-offset_top = 39.0
-offset_right = 593.0
-offset_bottom = 74.0
+offset_left = 413.0
+offset_top = 69.0
+offset_right = 533.0
+offset_bottom = 104.0
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -62,19 +77,15 @@ text = "Clicks:"
 offset_right = 101.0
 offset_bottom = 39.0
 
-[node name="GameOverLabel" type="Label" parent="."]
-offset_right = 356.0
-offset_bottom = 189.0
-
 [node name="CapturaDePantalla2025-04-24173153" type="Sprite2D" parent="."]
 position = Vector2(-297, 320)
 scale = Vector2(0.456386, 0.45171)
 
 [node name="Botiquin" type="TextureButton" parent="."]
-offset_left = 2.0
-offset_top = 30.0
-offset_right = 173.0
-offset_bottom = 162.0
+offset_left = 1.0
+offset_top = 35.0
+offset_right = 172.0
+offset_bottom = 167.0
 texture_normal = ExtResource("3_h2yge")
 texture_pressed = ExtResource("3_h2yge")
 texture_hover = ExtResource("3_h2yge")
@@ -88,7 +99,32 @@ offset_right = 710.0
 offset_bottom = 593.0
 texture_normal = ExtResource("4_1bvp3")
 
+[node name="vidat" type="Timer" parent="."]
+autostart = true
+
+[node name="timelft" type="Label" parent="."]
+offset_left = 17.0
+offset_top = 290.0
+offset_right = 130.0
+offset_bottom = 323.0
+
+[node name="actutimlef" type="Timer" parent="."]
+
+[node name="butsuero" type="TextureButton" parent="."]
+offset_left = 17.0
+offset_top = 171.0
+offset_right = 130.0
+offset_bottom = 284.0
+texture_normal = ExtResource("7_272bh")
+
+[node name="Timer2" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="pressed" from="CanvasLayer/ComprarBtn" to="." method="_on_comprar_btn_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Botiquin" to="." method="_on_botiquin_pressed"]
 [connection signal="pressed" from="clickbut" to="." method="_on_clickbut_pressed"]
+[connection signal="timeout" from="vidat" to="." method="_on_vidat_timeout"]
+[connection signal="timeout" from="actutimlef" to="." method="_on_actualizar_tiempo_restante_timeout"]
+[connection signal="pressed" from="butsuero" to="." method="_on_butsuero_pressed"]
+[connection signal="timeout" from="Timer2" to="." method="_on_pausa_timer_timeout"]
